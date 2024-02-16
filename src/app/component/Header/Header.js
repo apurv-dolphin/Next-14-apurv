@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./header.module.css";
 import Link from "next/link";
 
@@ -51,11 +51,11 @@ export default function SearchAppBar() {
             About
           </Link>
           <Link
-            href="/contact"
-            className={isItemSelected("Contact")}
-            onClick={() => handleItemClick("Contact")}
+            href="/profile"
+            className={isItemSelected("Profile")}
+            onClick={() => handleItemClick("Profile")}
           >
-            Contact
+            Profile
           </Link>
 
           {/* <a href="#">Home</a>

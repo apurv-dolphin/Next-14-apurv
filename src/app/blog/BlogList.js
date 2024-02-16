@@ -6,6 +6,7 @@ import styles from "./blog.module.css";
 import Image from "next/image";
 import Loader from "../component/Loader/Loader";
 import { CANADA, CATEGORY, INDIA, UNITED_KINGDOM, USA } from "../Util/util";
+import Link from "next/link";
 
 export default function BlogList() {
   const [newsData, setNewsData] = useState([]);
@@ -60,12 +61,7 @@ export default function BlogList() {
   useEffect(() => {
     fetchNews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage]);
-
-  useEffect(() => {
-    fetchNews();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [country]);
+  }, [currentPage, country]);
 
   return (
     <div className={styles.container}>
@@ -94,7 +90,9 @@ export default function BlogList() {
             {newsData.map((article, index) => (
               <li key={index} className={styles.listItem}>
                 <div className={styles.listItemText}>
-                  <h3 className={styles.listItemTitle}>{article?.title}</h3>
+                  <h3 className={styles.listItemTitle}>
+                    <Link href={`/blog/${index + 1}`}>{article?.title}</Link>
+                  </h3>
                   <p className={styles.listItemDescription}>
                     {article?.description}
                   </p>
